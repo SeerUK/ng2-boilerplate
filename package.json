@@ -4,7 +4,16 @@
   "description": "An opinionated, experimental Angular 2 / Webpack boilerplate with AOT compilation and tree-shaking.",
   "main": "src/main.browser.ts",
   "scripts": {
-    "test": "karma start"
+    "clean": "rimraf dist node_modules && npm cache clean",
+    "clean:install": "npm run clean && npm install",
+    "clean:start": "npm run clean-install && npm start",
+    "lint": "tslint --force \"src/**/*.ts\"",
+    "pretest": "npm run lint",
+    "server": "webpack-dev-server --inline --port 8080",
+    "start": "npm run server",
+    "start:hmr": "npm run server -- --hot",
+    "test": "karma start",
+    "watch": "webpack --watch --progress --profile"
   },
   "repository": {
     "type": "git",
