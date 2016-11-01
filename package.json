@@ -4,16 +4,17 @@
   "description": "An opinionated, experimental Angular 2 / Webpack boilerplate with AOT compilation and tree-shaking.",
   "main": "src/main.browser.ts",
   "scripts": {
-    "clean": "rimraf dist node_modules && npm cache clean",
-    "clean:install": "npm run clean && npm install",
-    "clean:start": "npm run clean-install && npm start",
+    "build": "webpack --config build/webpack.config.js --progress --profile",
+    "clean": "rimraf dist node_modules && yarn cache clean",
+    "clean:install": "yarn run clean && yarn install",
+    "clean:start": "yarn run clean-install && yarn start",
     "lint": "tslint --force \"src/**/*.ts\"",
-    "pretest": "npm run lint",
-    "server": "webpack-dev-server --inline --port 8080",
-    "start": "npm run server",
-    "start:hmr": "npm run server -- --hot",
+    "pretest": "yarn run lint",
+    "server": "webpack-dev-server --config build/webpack.config.js --inline --port 8080",
+    "start": "yarn run server",
+    "start:hmr": "yarn run server -- --hot",
     "test": "karma start",
-    "watch": "webpack --watch --progress --profile"
+    "watch": "webpack --config build/webpack.config.js --watch --progress --profile"
   },
   "repository": {
     "type": "git",

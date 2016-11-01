@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = {
-    "bootstrap": "./app/bootstrap.ts",
-    "bootstrap.aot": "./app/bootstrap.aot.ts",
-    "polyfill": "./app/polyfill.ts"
+    "vendor": "./src/app/vendor.browser.ts",
+    "polyfill": "./src/app/polyfills.browser.ts",
+    "main": "./src/app/main.browser.ts"
 };
