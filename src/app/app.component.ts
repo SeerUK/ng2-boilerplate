@@ -4,15 +4,12 @@ import { Component } from "@angular/core";
     selector: "app-root",
     styles: [],
     template: `
-        <h1>
-            {{title}}
-        </h1>
+        <header>
+            <h1>{{title}}</h1>
+        </header>
+        <router-outlet></router-outlet>
     `
 })
 export class AppComponent {
     public title = "Angular 2 works!";
-
-    constructor() {
-        console.log("Hello, Elliot!");
-    }
 }
