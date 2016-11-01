@@ -1,0 +1,31 @@
+{
+  "name": "ng2-boilerplate",
+  "version": "0.0.1-alpha.1",
+  "description": "An opinionated, experimental Angular 2 / Webpack boilerplate with AOT compilation and tree-shaking.",
+  "main": "src/main.browser.ts",
+  "scripts": {
+    "test": "karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeerUK/ng2-boilerplate.git"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "AOT",
+    "boilerplate",
+    "ng",
+    "ng2",
+    "project",
+    "template",
+    "tree-shaking",
+    "webpack"
+  ],
+  "author": "Elliot Wright <hello@elliotdwright.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SeerUK/ng2-boilerplate/issues"
+  },
+  "homepage": "https://github.com/SeerUK/ng2-boilerplate#readme"
+}
