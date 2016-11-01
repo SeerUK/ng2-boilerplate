@@ -1,0 +1,20 @@
+# Welcome to nahl/.editorconfig
+# Note: You may be looking at a symlink, please ensure changes you make here are compatible with all
+# of the components of the nahl project.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+
+[Makefile]
+indent_style = tab
+
+[package.json]
+indent_size = 2
+
+[*.yml]
+indent_size = 2
