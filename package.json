@@ -11,9 +11,9 @@
     "clean:start": "yarn run clean-install && yarn start",
     "lint": "tslint --force \"src/**/*.ts\"",
     "pretest": "yarn run lint",
-    "server": "webpack-dev-server --config build/webpack.config.js --inline",
-    "start": "yarn run server",
-    "start:hmr": "yarn run server -- --hot",
+    "serve": "webpack-dev-server --config build/webpack.config.js --inline",
+    "serve:prod": "webpack-dev-server --config build/webpack.prod.config.js --inline",
+    "start": "yarn run serve",
     "test": "karma start",
     "watch": "webpack --config build/webpack.config.js --watch --progress --profile",
     "watch:prod": "webpack --config build/webpack.prod.config.js --watch --progress --profile"
