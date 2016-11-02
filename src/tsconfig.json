@@ -17,5 +17,5 @@
     "angularCompilerOptions": {
         "debug": true
     },
-    "compileOnSave": false,
+    "compileOnSave": false
 }
