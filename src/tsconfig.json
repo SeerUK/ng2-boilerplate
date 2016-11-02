@@ -18,7 +18,4 @@
         "debug": true
     },
     "compileOnSave": false,
-    "files": [
-        "./main.ts"
-    ]
 }

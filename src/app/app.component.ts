@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 
 @Component({
     selector: "app-root",
-    styles: [],
+    styleUrls: [ "./app.component.scss" ],
     template: `
         <header>
             <h1>{{title}}</h1>
