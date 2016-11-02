@@ -12,6 +12,7 @@ module.exports = {
     node: require("./webpack/node"),
     output: require("./webpack/output"),
     plugins: require("./webpack/plugins").concat([
+        new webpack.NoErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: { warnings: false }
         })
