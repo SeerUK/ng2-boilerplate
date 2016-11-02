@@ -1,15 +1,21 @@
 "use strict";
 
-module.exports = function(prod) {
+const env = require("../env");
+
+module.exports = function() {
     const config = {
         rules: [
+            { test: /\.ts$/, loader: "tslint", enforce: "pre" },
             { test: /\.css$/, loader: "raw" },
             { test: /\.html$/, loader: "raw" }
         ]
     };
 
-    if (!!prod) {
-        config.rules.push({ test: /\.ts$/, loader: "@ngtools/webpack" });
+    if (env.isProd) {
+        config.rules.push({
+            test: /\.ts$/,
+            loader: "@ngtools/webpack"
+        });
     } else {
         config.rules.push({
             test: /\.ts$/,

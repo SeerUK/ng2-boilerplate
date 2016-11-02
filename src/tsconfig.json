@@ -14,5 +14,11 @@
             "../node_modules/@types"
         ]
     },
-    "compileOnSave": false
+    "angularCompilerOptions": {
+        "debug": true
+    },
+    "compileOnSave": false,
+    "files": [
+        "./main.ts"
+    ]
 }
