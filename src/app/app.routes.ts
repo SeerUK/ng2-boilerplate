@@ -2,8 +2,8 @@ import { ModuleWithProviders } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
 const routes = [
-    { path: "", loadChildren: "app/home/home.module" },
-    { path: "about", loadChildren: "app/about/about.module" }
+    { path: "", loadChildren: "+home/home.module#HomeModule" },
+    { path: "about", loadChildren: "+about/about.module#AboutModule" }
 ];
 
 export const APP_ROUTES: ModuleWithProviders = RouterModule.forRoot(routes);

@@ -5,6 +5,7 @@ const path = require("path");
 module.exports = {
     context: path.join(process.cwd(), "src"),
     devServer: require("./webpack/dev-server"),
+    devtool: "eval-source-map",
     entry: require("./webpack/entry"),
     module: require("./webpack/module")(),
     node: require("./webpack/node"),

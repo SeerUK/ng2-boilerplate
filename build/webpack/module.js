@@ -3,6 +3,14 @@
 const env = require("../env");
 
 module.exports = function() {
+    const atlLoader = {
+        loader: "awesome-typescript",
+        options: {
+            sourceMap: true,
+            tsconfig: "src/tsconfig.json"
+        }
+    };
+
     const postcssLoader = {
         loader: "postcss",
         options: {
@@ -14,7 +22,7 @@ module.exports = function() {
         }
     };
 
-    const config = {
+    return {
         rules: [
             { test: /\.ts$/, loader: "tslint", enforce: "pre" },
             { test: /\.css$/, use: [ "raw", postcssLoader ] },
@@ -22,29 +30,8 @@ module.exports = function() {
             { test: /\.scss$/, use: [ "raw", postcssLoader, "sass" ] },
             { test: /\.styl$/, use: [ "raw", postcssLoader, "stylus" ] },
             { test: /\.html$/, loader: "raw" },
-            { test: /\.json$/, loader: "json" }
+            { test: /\.json$/, loader: "json" },
+            { test: /\.ts$/, use: [ atlLoader, "angular2-template", "angular2-router" ] }
         ]
     };
-
-    if (env.isProd) {
-        config.rules.push({
-            test: /\.ts$/,
-            loader: "@ngtools/webpack"
-        });
-    } else {
-        config.rules.push({
-            test: /\.ts$/,
-            use: [
-                {
-                    loader: "awesome-typescript",
-                    options: {
-                        tsconfig: "src/tsconfig.json"
-                    }
-                },
-                "angular2-template"
-            ]
-        });
-    }
-
-    return config;
 };
