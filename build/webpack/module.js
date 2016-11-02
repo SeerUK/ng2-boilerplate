@@ -24,14 +24,23 @@ module.exports = function() {
 
     return {
         rules: [
+            // TS
             { test: /\.ts$/, loader: "tslint", enforce: "pre" },
+            { test: /\.ts$/, use: [ atlLoader, "angular2-template", "angular2-router" ] },
+            // Styles
             { test: /\.css$/, use: [ "raw", postcssLoader ] },
             { test: /\.less/, use: [ "raw", postcssLoader, "less" ] },
             { test: /\.scss$/, use: [ "raw", postcssLoader, "sass" ] },
             { test: /\.styl$/, use: [ "raw", postcssLoader, "stylus" ] },
+            // HTML
             { test: /\.html$/, loader: "raw" },
+            // JSON
             { test: /\.json$/, loader: "json" },
-            { test: /\.ts$/, use: [ atlLoader, "angular2-template", "angular2-router" ] }
+            // Images
+            { test: /\.(jpe?g|png|gif)$/, loader: "url-loader?limit=10000" },
+            // Fonts
+            { test: /\.(otf|ttf|woff|woff2)$/, loader: "url?limit=10000" },
+            { test: /\.(eot|svg)$/, loader: "file" }
         ]
     };
 };

@@ -1,11 +1,13 @@
 "use strict";
 
-const webpack = require("webpack");
+const env = require("../env");
 const path = require("path");
+const webpack = require("webpack");
 
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = [
+const plugins = [
     new webpack.optimize.CommonsChunkPlugin({
         name: [ "vendor" ]
     }),
@@ -21,3 +23,12 @@ module.exports = [
         chunksSortMode: "dependency"
     })
 ];
+
+if (env.isDist) {
+    plugins.push(new CopyWebpackPlugin([
+        { from: "assets", to: "assets" },
+        { from: "favicon.ico" }
+    ], { ignore: [ "**/.*" ] }))
+}
+
+module.exports = plugins;
