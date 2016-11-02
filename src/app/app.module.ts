@@ -2,7 +2,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home.component";
@@ -20,7 +19,7 @@ import { APP_ROUTES } from "./app.routes";
         BrowserModule,
         FormsModule,
         HttpModule,
-        RouterModule.forRoot(APP_ROUTES)
+        APP_ROUTES
     ],
     bootstrap: [AppComponent]
 })
