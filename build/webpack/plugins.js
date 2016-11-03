@@ -9,24 +9,29 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const plugins = [
-    new webpack.optimize.CommonsChunkPlugin({
-        name: [ "vendor" ]
-    }),
     new webpack.ContextReplacementPlugin(
         // For: https://github.com/angular/angular/issues/11580
         // The (\\|\/) piece accounts for path separators in *nix and Windows
         /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
         path.join(process.cwd(), "src")
-    ),
-    new webpack.ProgressPlugin(),
-    new ExtractTextPlugin({
-        filename: "styles.[hash].css"
-    }),
-    new HtmlWebpackPlugin({
-        template: "./index.html",
-        chunksSortMode: "dependency"
-    })
+    )
 ];
+
+if (!env.isTest) {
+    plugins.push(
+        new webpack.ProgressPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: [ "vendor" ]
+        }),
+        new ExtractTextPlugin({
+            filename: "styles.[hash].css"
+        }),
+        new HtmlWebpackPlugin({
+            template: "./index.html",
+            chunksSortMode: "dependency"
+        })
+    );
+}
 
 if (env.isProd) {
     plugins.push(

@@ -44,6 +44,7 @@ This is still a bit of a work in progress. The current focus has been on develop
 getting Angular 2 up and running, and making sure that usual things like using CSS or SCSS work in a
 sensible and consistent manner.
 
+* Support for CDNs (this may result in some kind of configuration file).
 * Support for unit testing (via Karma), and e2e testing (via protractor). Coverage will be provided
 by Istanbul.
 * Maybe some kind of documentation generation, but I'd prefer to keep this boilerplate quite light,

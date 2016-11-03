@@ -3,16 +3,11 @@
         "declaration": false,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "lib": [ "es6", "dom" ],
         "mapRoot": "./",
         "module": "es6",
         "moduleResolution": "node",
         "sourceMap": true,
-        "target": "es5",
-        "types": [ "node" ],
-        "typeRoots": [
-            "../node_modules/@types"
-        ]
+        "target": "es5"
     },
     "compileOnSave": false
 }

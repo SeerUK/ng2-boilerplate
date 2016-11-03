@@ -3,10 +3,18 @@
 const env = require("./env");
 const path = require("path");
 
+var devtool = "eval-source-map";
+
+if (env.isProd) {
+    devtool = "source-map";
+} else if (env.isTest) {
+    devtool = "inline-source-map";
+}
+
 module.exports = {
     context: path.join(process.cwd(), "src"),
     devServer: require("./webpack/dev-server"),
-    devtool: env.isProd ? "source-map" : "eval-source-map",
+    devtool: devtool,
     entry: require("./webpack/entry"),
     module: require("./webpack/module"),
     node: require("./webpack/node"),

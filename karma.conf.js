@@ -1,16 +1,36 @@
 "use strict";
 
+const webpackConfig = require("./build/webpack.config");
+
 module.exports = function(config) {
     config.set({
         basePath: ".",
+        files: [
+            { pattern: "./src/test.ts", watched: false }
+        ],
         frameworks: [ "jasmine" ],
         exclude: [],
-        webpackMiddleware: { stats: "errors-only"},
-        reporters: [ "mocha", "coverage", "remap-coverage" ],
-        port: 9876,
-        logLevel: config.LOG_INFO,
-        colors: true,
+        preprocessors: {
+            "./src/test.ts": [ "webpack", "sourcemap" ]
+        },
+        webpack: webpackConfig,
+        webpackMiddleware: {
+            noInfo: true,
+            stats: "errors-only"
+        },
+        reporters: [ "mocha", "coverage" ],
+        coverageReporter: {
+            dir: "coverage/",
+            reporters: [
+                { type: "html", subdir: "report-html" },
+                { type: "json", subdir: "report-json" }
+            ]
+        },
         browsers: [ "Chrome" ],
+        logLevel: config.LOG_INFO,
+        port: 9876,
+        colors: true,
+        autoWatch: false,
         singleRun: true
     });
 };

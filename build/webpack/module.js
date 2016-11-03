@@ -22,33 +22,38 @@ const componentStyleSassLoaders = componentStyleBaseLoaders.concat([ "resolve-ur
 const globalStyleBaseLoaders = [ "css?sourcemap&importLoaders=1", "postcss" ];
 const globalStyleSassLoaders = globalStyleBaseLoaders.concat([ "sass?sourcemap" ]);
 
+const rules = [
+    // TS
+    { test: /\.ts$/, use: [ atlLoader, "angular2-template", "angular2-router" ] },
+    // App Styles
+    { test: /\.css$/, include: [ appStyles ], use: componentStyleBaseLoaders },
+    { test: /\.scss$/, include: [ appStyles ], use: componentStyleSassLoaders },
+    // Global Styles
+    {
+        test: /\.css$/,
+        exclude: [ appStyles ],
+        loader: ExtractTextPlugin.extract(globalStyleBaseLoaders)
+    },
+    {
+        test: /\.scss$/,
+        exclude: [ appStyles ],
+        loader: ExtractTextPlugin.extract(globalStyleSassLoaders)
+    },
+    // HTML
+    { test: /\.html$/, loader: "raw" },
+    // JSON
+    { test: /\.json$/, loader: "json" },
+    // Images
+    { test: /\.(jpe?g|png|gif)$/, loader: urlLoader },
+    // Fonts
+    { test: /\.(otf|ttf|woff|woff2)$/, loader: urlLoader },
+    { test: /\.(eot|svg)$/, loader: fileLoader }
+];
+
+if (!env.isTest) {
+    rules.push({ test: /\.ts$/, loader: "tslint", enforce: "pre" });
+}
+
 module.exports = {
-    rules: [
-        // TS
-        { test: /\.ts$/, loader: "tslint", enforce: "pre" },
-        { test: /\.ts$/, use: [ atlLoader, "angular2-template", "angular2-router" ] },
-        // App Styles
-        { test: /\.css$/, include: [ appStyles ], use: componentStyleBaseLoaders },
-        { test: /\.scss$/, include: [ appStyles ], use: componentStyleSassLoaders },
-        // Global Styles
-        {
-            test: /\.css$/,
-            exclude: [ appStyles ],
-            loader: ExtractTextPlugin.extract(globalStyleBaseLoaders)
-        },
-        {
-            test: /\.scss$/,
-            exclude: [ appStyles ],
-            loader: ExtractTextPlugin.extract(globalStyleSassLoaders)
-        },
-        // HTML
-        { test: /\.html$/, loader: "raw" },
-        // JSON
-        { test: /\.json$/, loader: "json" },
-        // Images
-        { test: /\.(jpe?g|png|gif)$/, loader: urlLoader },
-        // Fonts
-        { test: /\.(otf|ttf|woff|woff2)$/, loader: urlLoader },
-        { test: /\.(eot|svg)$/, loader: fileLoader }
-    ]
+    rules: rules
 };
