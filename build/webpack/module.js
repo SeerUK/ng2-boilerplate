@@ -13,24 +13,13 @@ const atlLoader = {
     }
 };
 
-const postcssLoader = {
-    loader: "postcss",
-    options: {
-        plugins: function() {
-            return [
-                require("autoprefixer")()
-            ];
-        }
-    }
-};
-
 const appStyles = path.join(process.cwd(), "src", "app");
 const fileLoader = "file?name=[path][name].[hash].[ext]";
 const urlLoader = "url?limit=10000&name=[path][name].[hash].[ext]";
 
-const componentStyleBaseLoaders = [ "to-string", "css?importLoaders=1", postcssLoader ];
+const componentStyleBaseLoaders = [ "to-string", "css?importLoaders=1", "postcss" ];
 const componentStyleSassLoaders = componentStyleBaseLoaders.concat([ "resolve-url", "sass" ]);
-const globalStyleBaseLoaders = [ "css?sourcemap&minimize&importLoaders=1", postcssLoader ];
+const globalStyleBaseLoaders = [ "css?sourcemap&minimize&importLoaders=1", "postcss" ];
 const globalStyleSassLoaders = globalStyleBaseLoaders.concat([ "sass?sourcemap" ]);
 
 module.exports = {
