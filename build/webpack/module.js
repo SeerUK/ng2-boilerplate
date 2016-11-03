@@ -17,9 +17,9 @@ const appStyles = path.join(process.cwd(), "src", "app");
 const fileLoader = "file?name=[path][name].[hash].[ext]";
 const urlLoader = "url?limit=10000&name=[path][name].[hash].[ext]";
 
-const componentStyleBaseLoaders = [ "to-string", "css?importLoaders=1", "postcss" ];
-const componentStyleSassLoaders = componentStyleBaseLoaders.concat([ "resolve-url", "sass" ]);
-const globalStyleBaseLoaders = [ "css?sourcemap&minimize&importLoaders=1", "postcss" ];
+const componentStyleBaseLoaders = [ "to-string", "css?sourcemap&importLoaders=1", "postcss" ];
+const componentStyleSassLoaders = componentStyleBaseLoaders.concat([ "resolve-url", "sass?sourcemap" ]);
+const globalStyleBaseLoaders = [ "css?sourcemap&importLoaders=1", "postcss" ];
 const globalStyleSassLoaders = globalStyleBaseLoaders.concat([ "sass?sourcemap" ]);
 
 module.exports = {
