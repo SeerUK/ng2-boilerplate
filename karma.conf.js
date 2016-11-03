@@ -11,20 +11,14 @@ module.exports = function(config) {
         frameworks: [ "jasmine" ],
         exclude: [],
         preprocessors: {
-            "./src/test.ts": [ "webpack", "sourcemap" ]
+            "./src/test.ts": [ "webpack" ]
         },
         webpack: webpackConfig,
         webpackMiddleware: {
             noInfo: true,
             stats: "errors-only"
         },
-        reporters: [ "mocha", "coverage" ],
-        coverageReporter: {
-            dir: "coverage/",
-            reporters: [
-                { type: "json", subdir: "report-json" }
-            ]
-        },
+        reporters: [ "mocha" ],
         browsers: [ "Chrome" ],
         logLevel: config.LOG_INFO,
         port: 9876,
