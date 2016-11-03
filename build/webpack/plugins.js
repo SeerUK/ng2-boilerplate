@@ -5,6 +5,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const plugins = [
@@ -18,11 +19,23 @@ const plugins = [
         path.join(process.cwd(), "src")
     ),
     new webpack.ProgressPlugin(),
+    new ExtractTextPlugin({
+        filename: "styles.[hash].css"
+    }),
     new HtmlWebpackPlugin({
         template: "./index.html",
         chunksSortMode: "dependency"
     })
 ];
+
+if (env.isProd) {
+    plugins.push(
+        new webpack.NoErrorsPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: { warnings: false }
+        })
+    );
+}
 
 if (env.isDist) {
     plugins.push(new CopyWebpackPlugin([
