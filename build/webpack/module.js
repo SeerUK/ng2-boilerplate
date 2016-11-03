@@ -8,7 +8,8 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const atlLoader = {
     loader: "awesome-typescript",
     options: {
-        sourceMap: true,
+        inlineSourceMap: !!env.isTest,
+        sourceMap: !env.isTest,
         tsconfig: "src/tsconfig.json"
     }
 };
@@ -24,7 +25,11 @@ const globalStyleSassLoaders = globalStyleBaseLoaders.concat([ "sass?sourcemap" 
 
 const rules = [
     // TS
-    { test: /\.ts$/, use: [ atlLoader, "angular2-template", "angular2-router" ] },
+    {
+        test: /\.ts$/,
+        use: [ atlLoader, "angular2-template", "angular2-router" ],
+        exclude: [ env.isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/ ]
+    },
     // App Styles
     { test: /\.css$/, include: [ appStyles ], use: componentStyleBaseLoaders },
     { test: /\.scss$/, include: [ appStyles ], use: componentStyleSassLoaders },
@@ -32,12 +37,12 @@ const rules = [
     {
         test: /\.css$/,
         exclude: [ appStyles ],
-        loader: ExtractTextPlugin.extract(globalStyleBaseLoaders)
+        loader: env.isTest ? "null" : ExtractTextPlugin.extract(globalStyleBaseLoaders)
     },
     {
         test: /\.scss$/,
         exclude: [ appStyles ],
-        loader: ExtractTextPlugin.extract(globalStyleSassLoaders)
+        loader: env.isTest ? "null" : ExtractTextPlugin.extract(globalStyleSassLoaders)
     },
     // HTML
     { test: /\.html$/, loader: "raw" },

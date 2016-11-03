@@ -3,11 +3,11 @@
         "declaration": false,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "mapRoot": "./",
-        "module": "es6",
+        "module": "commonjs",
         "moduleResolution": "node",
         "sourceMap": true,
         "target": "es5"
     },
+    "buildOnSave": false,
     "compileOnSave": false
 }
