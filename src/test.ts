@@ -23,8 +23,8 @@ testing.getTestBed().initTestEnvironment(
     testingBrowser.platformBrowserDynamicTesting()
 );
 
-// Then we find all the tests.
-Promise.resolve(require.context("./", true, /\.spec\.ts/))
+// Then we find all TypeScript files.
+Promise.resolve(require.context("./app", true, /\.ts/))
     // And load the modules.
     .then(context => context.keys().map(context))
     // Finally, start Karma to run the tests.
