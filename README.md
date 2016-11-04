@@ -40,12 +40,20 @@ $ # Or for production...
 $ yarn run build:prod
 ```
 
-For testing:
+For unit testing:
 
 ```
 $ yarn run test
 $ # Or to watch...
 $ yarn run test:watch
+```
+
+For e2e testing:
+
+```
+$ yarn run serve
+$ # Elsewhere...
+$ yarn run e2e
 ```
 
 For development:
