@@ -18,7 +18,7 @@ module.exports = function(config) {
             noInfo: true,
             stats: "errors-only"
         },
-        reporters: [ "mocha" ],
+        reporters: [ "progress" ],
         browsers: [ "Chrome" ],
         logLevel: config.LOG_INFO,
         port: 9876,
