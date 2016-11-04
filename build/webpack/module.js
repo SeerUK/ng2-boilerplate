@@ -7,9 +7,8 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const atlLoader = {
     loader: "awesome-typescript",
-    options: {
-        inlineSourceMap: !!env.isTest,
-        sourceMap: !env.isTest,
+    query: {
+        module: env.isTest ? "commonjs" : "es6",
         tsconfig: "src/tsconfig.json"
     }
 };
@@ -57,6 +56,31 @@ const rules = [
 
 if (!env.isTest) {
     rules.push({ test: /\.ts$/, loader: "tslint", enforce: "pre" });
+}
+
+if (env.isTest) {
+    rules.push({
+        test: /\.js$/,
+        loader: "source-map",
+        enforce: "pre",
+        exclude: [
+            /node_modules/
+        ]
+    });
+
+    rules.push({
+        test: /\.(js|ts)$/,
+        loader: "sourcemap-istanbul-instrumenter",
+        enforce: "post",
+        include: [
+            path.join(process.cwd(), "src", "app")
+        ],
+        exclude: [
+            /\.(e2e|spec)\.ts$/,
+            /node_modules/
+        ],
+        query: { "force-sourcemap": true }
+    });
 }
 
 module.exports = {
