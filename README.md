@@ -40,6 +40,26 @@ $ # Or for production...
 $ yarn run build:prod
 ```
 
+For testing:
+
+```
+$ yarn run test
+$ # Or to watch...
+$ yarn run test:watch
+```
+
+For development:
+
+```
+$ yarn run serve
+$ # Or to serve production...
+$ yarn run serve:prod
+$ # Or to build only on watch...
+$ yarn run watch
+$ # Or to watch production...
+$ yarn run watch:prod
+```
+
 You can see all of the tasks listed in the `package.json` file in this repository.
 
 ## Todo List
