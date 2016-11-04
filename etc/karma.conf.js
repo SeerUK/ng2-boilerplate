@@ -1,17 +1,17 @@
 "use strict";
 
-const webpackConfig = require("./build/webpack.config");
+const webpackConfig = require("./webpack.config");
 
 module.exports = function(config) {
     config.set({
         basePath: "",
         files: [
-            { pattern: "./src/test.ts", watched: false }
+            { pattern: "../src/test.ts", watched: false }
         ],
         frameworks: [ "jasmine" ],
         exclude: [],
         preprocessors: {
-            "./src/test.ts": [ "webpack", "sourcemap" ]
+            "../src/test.ts": [ "webpack", "sourcemap" ]
         },
         webpack: webpackConfig,
         webpackMiddleware: {
@@ -22,7 +22,7 @@ module.exports = function(config) {
         remapIstanbulReporter: {
             reports: {
                 html: "coverage/report-html/",
-                lcovonly: "./coverage/coverage.lcov"
+                lcovonly: "coverage/coverage.lcov"
             }
         },
         browsers: [ "Chrome" ],
