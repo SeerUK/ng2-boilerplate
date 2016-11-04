@@ -1,9 +1,10 @@
 # ng2-boilerplate
 
-An opinionated, experimental Angular 2 / Webpack boilerplate.
+An opinionated, experimental Angular 2 / Webpack boilerplate with tree-shaking.
 
 Current feature-set out of the box is:
 * Angular 2 + Typscript set up.
+    * The production build tasks produce tree-shaken output.
 * Code style issues reported via TSLint, also using Codelyzer.
 * Unit testing + code coverage with Karma, Jasmine, and Istanbul. 
     * Code coverage reports show the TypeScript source (almost, unfortunately transformations from 
