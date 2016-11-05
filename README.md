@@ -41,6 +41,18 @@ $ # Or for production...
 $ yarn run build:prod
 ```
 
+For development:
+
+```
+$ yarn run serve
+$ # Or to serve production...
+$ yarn run serve:prod
+$ # Or to build only on watch...
+$ yarn run watch
+$ # Or to watch production...
+$ yarn run watch:prod
+```
+
 For unit testing:
 
 ```
@@ -55,18 +67,6 @@ For e2e testing:
 $ yarn run serve
 $ # Elsewhere...
 $ yarn run e2e
-```
-
-For development:
-
-```
-$ yarn run serve
-$ # Or to serve production...
-$ yarn run serve:prod
-$ # Or to build only on watch...
-$ yarn run watch
-$ # Or to watch production...
-$ yarn run watch:prod
 ```
 
 You can see all of the tasks listed in the `package.json` file in this repository.
