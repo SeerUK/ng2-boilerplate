@@ -1,9 +1,13 @@
 import { ModuleWithProviders } from "@angular/core";
-import { RouterModule } from "@angular/router";
+import { PreloadAllModules, RouterModule } from "@angular/router";
 
 const routes = [
-    { path: "", loadChildren: "+home/home.module#HomeModule" },
-    { path: "about", loadChildren: "+about/about.module#AboutModule" }
+    { path: "", loadChildren: "app/+home/home.module#HomeModule" },
+    { path: "about", loadChildren: "app/+about/about.module#AboutModule" }
 ];
 
-export const APP_ROUTES: ModuleWithProviders = RouterModule.forRoot(routes);
+const routerOptions = {
+    preloadingStrategy: PreloadAllModules
+};
+
+export const APP_ROUTES: ModuleWithProviders = RouterModule.forRoot(routes, routerOptions);

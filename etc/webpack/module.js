@@ -6,7 +6,7 @@ const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const atlLoader = {
-    loader: "awesome-typescript",
+    loader: "awesome-typescript-loader",
     query: {
         module: env.isTest ? "commonjs" : "es6",
         tsconfig: "src/tsconfig.json"
@@ -14,19 +14,21 @@ const atlLoader = {
 };
 
 const appStyles = path.join(process.cwd(), "src", "app");
-const fileLoader = "file?name=[path][name].[hash].[ext]";
-const urlLoader = "url?limit=10000&name=[path][name].[hash].[ext]";
+const fileLoader = "file-loader?name=[path][name].[hash].[ext]";
+const urlLoader = "url-loader?limit=10000&name=[path][name].[hash].[ext]";
 
-const componentStyleBaseLoaders = [ "to-string", "css?sourcemap&importLoaders=1", "postcss" ];
-const componentStyleSassLoaders = componentStyleBaseLoaders.concat([ "resolve-url", "sass?sourcemap" ]);
-const globalStyleBaseLoaders = [ "css?sourcemap&importLoaders=1", "postcss" ];
-const globalStyleSassLoaders = globalStyleBaseLoaders.concat([ "sass?sourcemap" ]);
+const cssLoader = "css-loader?sourcemap&importLoaders=1";
+const sassLoader = "sass-loader?sourcemap";
+const componentStyleBaseLoaders = [ "to-string-loader", cssLoader, "postcss-loader" ];
+const componentStyleSassLoaders = componentStyleBaseLoaders.concat([ "resolve-url-loader", sassLoader ]);
+const globalStyleBaseLoaders = [ cssLoader, "postcss-loader" ];
+const globalStyleSassLoaders = globalStyleBaseLoaders.concat([ "resolve-url-loader", sassLoader ]);
 
 const rules = [
     // TS
     {
         test: /\.ts$/,
-        use: [ atlLoader, "angular2-template", "angular2-router" ],
+        use: [ atlLoader, "angular2-template-loader", "angular2-router-loader" ],
         exclude: [ env.isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/ ]
     },
     // App Styles
@@ -44,9 +46,9 @@ const rules = [
         loader: env.isTest ? "null" : ExtractTextPlugin.extract(globalStyleSassLoaders)
     },
     // HTML
-    { test: /\.html$/, loader: "raw" },
+    { test: /\.html$/, loader: "raw-loader" },
     // JSON
-    { test: /\.json$/, loader: "json" },
+    { test: /\.json$/, loader: "json-loader" },
     // Images
     { test: /\.(jpe?g|png|gif)$/, loader: urlLoader },
     // Fonts
@@ -55,13 +57,13 @@ const rules = [
 ];
 
 if (!env.isTest) {
-    rules.push({ test: /\.ts$/, loader: "tslint", enforce: "pre" });
+    rules.push({ test: /\.ts$/, loader: "tslint-loader", enforce: "pre" });
 }
 
 if (env.isTest) {
     rules.push({
         test: /\.js$/,
-        loader: "source-map",
+        loader: "source-map-loader",
         enforce: "pre",
         exclude: [
             /node_modules/
@@ -70,7 +72,7 @@ if (env.isTest) {
 
     rules.push({
         test: /\.(js|ts)$/,
-        loader: "sourcemap-istanbul-instrumenter",
+        loader: "sourcemap-istanbul-instrumenter-loader",
         enforce: "post",
         include: [
             path.join(process.cwd(), "src", "app")
