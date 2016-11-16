@@ -4,6 +4,7 @@ import { Component } from "@angular/core";
     selector: "app-home",
     template: `
         <div>This is the home page!</div>
+        <app-list></app-list>
     `
 })
 export class HomeComponent {}

@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let item of items">
+        <app-list-item-image *ngIf="item.type === 'image'" [image]="item"></app-list-item-image>
+        <app-list-item-text *ngIf="item.type === 'text'" [text]="item"></app-list-item-text>
+    </li>
+</ul>
