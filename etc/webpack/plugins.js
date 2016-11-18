@@ -14,7 +14,7 @@ const plugins = [
         // For: https://github.com/angular/angular/issues/11580
         // The (\\|\/) piece accounts for path separators in *nix and Windows
         /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-        path.join(process.cwd(), "src")
+        env.root
     )
 ];
 
@@ -44,7 +44,15 @@ if (env.isTest) {
 
 if (env.isProd) {
     plugins.push(
+        new webpack.DefinePlugin({
+            "process.env.NODE_ENV": JSON.stringify("production")
+        }),
         new webpack.NoErrorsPlugin(),
+        new webpack.NormalModuleReplacementPlugin(
+            new RegExp(path.resolve(env.root, "environment/environment.ts")
+                .replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&")),
+            path.resolve(env.root, "environment/environment.prod.ts")
+        ),
         new webpack.optimize.UglifyJsPlugin({
             compress: { warnings: false }
         })
