@@ -4,7 +4,6 @@ An opinionated, experimental Angular 2 / Webpack boilerplate with tree-shaking.
 
 Current feature-set out of the box is:
 * Angular 2 + Typscript set up.
-    * The production build tasks produce tree-shaken output.
 * Code style issues reported via TSLint, also using Codelyzer.
 * Unit testing + code coverage with Karma, Jasmine, and Istanbul. 
     * Code coverage reports show the TypeScript source (almost, unfortunately transformations from 
@@ -19,7 +18,10 @@ Current feature-set out of the box is:
     * CSS or SCSS that is not for components will be built do a separate file in `dist/css/`.
 * Support for `styleUrls` and `templateUrls` without using `require`, or `.toString()` etc.
 * Support for Angular 2's lazy loading functionality.
-* Minified, tree-shaken production build.
+* Separate production build tasks:
+    * Minified output
+    * Tree-shaken output
+    * Static build environment specific configuration (e.g. to call `enableProdMode()`)
 
 This project uses [Yarn][1] as a package manager, and task runner.
 
