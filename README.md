@@ -79,7 +79,7 @@ This is still a bit of a work in progress. The current focus has been on develop
 getting Angular 2 up and running, and making sure that usual things like using CSS or SCSS work in a
 sensible and consistent manner. Here is the current todo list in priority order:
 
-* Support for CDNs (this may result in some kind of configuration file).
+* Review CSS/SCSS loader configuration, this will need some testing in a real project.
 
 ## License
 
