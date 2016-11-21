@@ -17,12 +17,13 @@ const appStyles = path.join(process.cwd(), "src", "app");
 const fileLoader = "file-loader?name=[path][name].[hash].[ext]";
 const urlLoader = "url-loader?limit=10000&name=[path][name].[hash].[ext]";
 
-const cssLoader = "css-loader?sourcemap&importLoaders=1";
-const sassLoader = "sass-loader?sourcemap";
+const cssLoader = "css-loader?sourceMap&importLoaders=1";
+const resolveUrlLoader = "resolve-url-loader?fail&sourceMap";
+const sassLoader = "sass-loader?sourceMap";
 const componentStyleBaseLoaders = [ "to-string-loader", cssLoader, "postcss-loader" ];
-const componentStyleSassLoaders = componentStyleBaseLoaders.concat([ "resolve-url-loader", sassLoader ]);
+const componentStyleSassLoaders = componentStyleBaseLoaders.concat([ resolveUrlLoader, sassLoader ]);
 const globalStyleBaseLoaders = [ cssLoader, "postcss-loader" ];
-const globalStyleSassLoaders = globalStyleBaseLoaders.concat([ "resolve-url-loader", sassLoader ]);
+const globalStyleSassLoaders = globalStyleBaseLoaders.concat([ resolveUrlLoader, sassLoader ]);
 
 const rules = [
     // TS
