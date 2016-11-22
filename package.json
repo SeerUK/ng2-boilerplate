@@ -60,6 +60,8 @@
     "zone.js": "^0.6.26"
   },
   "devDependencies": {
+    "@angular/compiler-cli": "2.2.1",
+    "@ngtools/webpack": "^1.1.7",
     "@types/core-js": "^0.9.34",
     "@types/jasmine": "^2.5.37",
     "@types/node": "^6.0.46",
@@ -94,7 +96,7 @@
     "raw-loader": "^0.5.1",
     "resolve-url-loader": "^1.6.0",
     "rimraf": "^2.5.4",
-    "sass-loader": "^4.0.2",
+    "sass-loader": "^3.2.3",
     "source-map-loader": "^0.1.5",
     "sourcemap-istanbul-instrumenter-loader": "^0.2.0",
     "stylus": "^0.54.5",

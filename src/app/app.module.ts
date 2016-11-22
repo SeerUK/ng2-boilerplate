@@ -11,6 +11,7 @@ import { AppComponent } from "./app.component";
 
 @NgModule({
     imports: [
+        AppRoutingModule,
         BrowserModule,
         FormsModule,
         HttpModule,

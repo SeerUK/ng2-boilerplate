@@ -1,6 +1,7 @@
 "use strict";
 
 const env = require("../env");
+const ngtools = require("@ngtools/webpack");
 const path = require("path");
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -29,8 +30,9 @@ const rules = [
     // TS
     {
         test: /\.ts$/,
-        use: [ atlLoader, "angular2-template-loader", "angular2-router-loader" ],
-        exclude: [ env.isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/ ]
+        loader: "@ngtools/webpack"
+        // use: [ atlLoader, "angular2-template-loader", "angular2-router-loader" ],
+        // exclude: [ env.isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/ ]
     },
     // App Styles
     { test: /\.css$/, include: [ appStyles ], use: componentStyleBaseLoaders },
@@ -58,7 +60,12 @@ const rules = [
 ];
 
 if (!env.isTest) {
-    rules.push({ test: /\.ts$/, loader: "tslint-loader", enforce: "pre" });
+    rules.push({
+        test: /\.ts$/,
+        exclude: [ /\.ngfactory.ts$/, /\.shim.ts$/ ],
+        loader: "tslint-loader",
+        enforce: "pre"
+    });
 }
 
 if (env.isTest) {
