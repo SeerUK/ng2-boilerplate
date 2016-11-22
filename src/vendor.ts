@@ -1,3 +1,5 @@
+import "reflect-metadata";
+
 import "@angular/common";
 import "@angular/core";
 import "@angular/http";

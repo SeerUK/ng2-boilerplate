@@ -39,12 +39,12 @@ const rules = [
     {
         test: /\.css$/,
         exclude: [ appStyles ],
-        loader: env.isTest ? "null" : ExtractTextPlugin.extract(globalStyleBaseLoaders)
+        loader: env.isTest ? "null-loader" : ExtractTextPlugin.extract(globalStyleBaseLoaders)
     },
     {
         test: /\.scss$/,
         exclude: [ appStyles ],
-        loader: env.isTest ? "null" : ExtractTextPlugin.extract(globalStyleSassLoaders)
+        loader: env.isTest ? "null-loader" : ExtractTextPlugin.extract(globalStyleSassLoaders)
     },
     // HTML
     { test: /\.html$/, loader: "raw-loader" },
