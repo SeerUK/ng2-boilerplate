@@ -61,7 +61,7 @@ if (env.isProd) {
 
 if (env.isDist) {
     plugins.push(new CopyWebpackPlugin([
-        { from: "assets", to: "assets" },
+        { from: "static", to: "static" },
         { from: "favicon.ico" }
     ], { ignore: [ "**/.*" ] }))
 }

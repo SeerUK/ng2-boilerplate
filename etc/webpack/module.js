@@ -47,7 +47,7 @@ const rules = [
         loader: env.isTest ? "null-loader" : ExtractTextPlugin.extract(globalStyleSassLoaders)
     },
     // HTML
-    { test: /\.html$/, loader: "raw-loader" },
+    { test: /\.html$/, loader: "html-loader" },
     // JSON
     { test: /\.json$/, loader: "json-loader" },
     // Images

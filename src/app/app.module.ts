@@ -3,19 +3,23 @@ import { FormsModule } from "@angular/forms";
 import { HttpModule } from "@angular/http";
 import { BrowserModule } from "@angular/platform-browser";
 
+import { AppRoutingModule } from "./app-routing.module";
+import { HomeModule } from "./home/home.module";
+import { AboutModule } from "./about/about.module";
+
 import { AppComponent } from "./app.component";
 
-import { APP_ROUTES } from "./app.routes";
-
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        APP_ROUTES
+        AppRoutingModule,
+        HomeModule,
+        AboutModule,
+    ],
+    declarations: [
+        AppComponent
     ],
     bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 
-import { HOME_ROUTES } from "./home.routes";
+import { HomeRoutingModule } from "./home-routing.module";
 
 import { HomeComponent } from "./home.component";
 import { ListComponent } from "./polymorphic-list/list.component";
@@ -16,11 +16,11 @@ const components = [
 ];
 
 @NgModule({
-    declarations: components,
-    exports: components,
     imports: [
         CommonModule,
-        HOME_ROUTES
-    ]
+        HomeRoutingModule
+    ],
+    declarations: components,
+    exports: components
 })
 export class HomeModule {}
