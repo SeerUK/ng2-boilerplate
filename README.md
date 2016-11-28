@@ -71,7 +71,9 @@ $ # Elsewhere...
 $ yarn run e2e
 ```
 
-You can see all of the tasks listed in the `package.json` file in this repository.
+You can see all of the tasks listed in the `package.json` file in this repository. Some tasks also 
+can be run with AOT enabled by putting `:aot` on the end, for example; `build:prod:aot` would 
+produce a production-ready, AOT build.
 
 ## Todo List
 
