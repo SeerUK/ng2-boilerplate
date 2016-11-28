@@ -21,7 +21,7 @@ const plugins = [
 if (!env.isTest) {
     plugins.push(
         new webpack.optimize.CommonsChunkPlugin({
-            name: [ "vendor" ]
+            name: [ "vendor", "polyfills" ]
         }),
         new ExtractTextPlugin({
             filename: "styles.[hash].css"

@@ -1,4 +1,3 @@
-import "./polyfills";
 import "./main.scss";
 
 import { enableProdMode } from "@angular/core";
