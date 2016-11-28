@@ -79,7 +79,10 @@ This is still a bit of a work in progress. The current focus has been on develop
 getting Angular 2 up and running, and making sure that usual things like using CSS or SCSS work in a
 sensible and consistent manner. Here is the current todo list in priority order:
 
-* Review CSS/SCSS loader configuration, this will need some testing in a real project.
+* Review CSS/SCSS loader configuration, this will need some testing in a real project. (In progress)
+* Review coverage reporting. This process is a little over-complicated right now.
+* Review AOT and it's usage / restrictions.
+* Review potential to add server-side rendering via [Angular Universal][4].
 
 ## License
 
@@ -96,3 +99,4 @@ on fixing it yourself.
 [1]: https://yarnpkg.com/
 [2]: https://github.com/SeerUK/ng2-boilerplate/pulls
 [3]: https://github.com/SeerUK/ng2-boilerplate/issues
+[4]: https://universal.angular.io/
