@@ -16,13 +16,16 @@ const plugins = [
         // The (\\|\/) piece accounts for path separators in *nix and Windows
         /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
         env.root
-    ),
-    new ngtools.AotPlugin({
+    )
+];
+
+if (env.isAot) {
+    plugins.push(new ngtools.AotPlugin({
         baseDir: process.cwd(),
         tsConfigPath: "src/tsconfig.json",
         entryModule: path.join(process.cwd(), "src", "app", "app.module") + "#AppModule"
-    })
-];
+    }));
+}
 
 if (!env.isTest) {
     plugins.push(
