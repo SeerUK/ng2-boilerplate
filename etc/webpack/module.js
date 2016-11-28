@@ -27,13 +27,6 @@ const globalStyleBaseLoaders = [ cssLoader, "postcss-loader" ];
 const globalStyleSassLoaders = globalStyleBaseLoaders.concat([ resolveUrlLoader, sassLoader ]);
 
 const rules = [
-    // TS
-    {
-        test: /\.ts$/,
-        loader: "@ngtools/webpack"
-        // use: [ atlLoader, "angular2-template-loader", "angular2-router-loader" ],
-        // exclude: [ env.isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/ ]
-    },
     // App Styles
     { test: /\.css$/, include: [ appStyles ], use: componentStyleBaseLoaders },
     { test: /\.scss$/, include: [ appStyles ], use: componentStyleSassLoaders },
@@ -58,6 +51,19 @@ const rules = [
     { test: /\.(otf|ttf|woff|woff2)$/, loader: urlLoader },
     { test: /\.(eot|svg)$/, loader: fileLoader }
 ];
+
+if (env.isAot) {
+    rules.push({
+        test: /\.ts$/,
+        loader: "@ngtools/webpack"
+    });
+} else {
+    rules.push({
+        test: /\.ts$/,
+        use: [ atlLoader, "angular2-template-loader", "angular2-router-loader" ],
+        exclude: [ env.isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/ ]
+    });
+}
 
 if (!env.isTest) {
     rules.push({

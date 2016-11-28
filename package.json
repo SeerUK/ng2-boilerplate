@@ -5,7 +5,9 @@
   "main": "src/main.browser.ts",
   "scripts": {
     "build": "rimraf dist && webpack --config etc/webpack.conf.js --progress --profile",
+    "build:aot": "rimraf dist && webpack --config etc/webpack.conf.js --progress --profile",
     "build:prod": "rimraf dist && webpack --config etc/webpack.conf.js --progress --profile",
+    "build:prod:aot": "rimraf dist && webpack --config etc/webpack.conf.js --progress --profile",
     "clean": "rimraf dist coverage node_modules && yarn cache clean",
     "clean:install": "yarn run clean && yarn install",
     "clean:start": "yarn run clean-install && yarn start",
@@ -13,12 +15,16 @@
     "lint": "tslint --force \"src/**/*.ts\"",
     "pretest": "yarn run lint",
     "serve": "webpack-dev-server --config etc/webpack.conf.js --inline",
+    "serve:aot": "webpack-dev-server --config etc/webpack.conf.js --inline",
     "serve:prod": "webpack-dev-server --config etc/webpack.conf.js --inline",
+    "serve:prod:aot": "webpack-dev-server --config etc/webpack.conf.js --inline",
     "start": "yarn run serve",
     "test": "karma start etc/karma.conf.js",
     "test:watch": "yarn run pretest && karma start etc/karma.conf.js --no-single-run --auto-watch",
     "watch": "webpack --config etc/webpack.conf.js --watch --progress --profile",
+    "watch:aot": "webpack --config etc/webpack.conf.js --watch --progress --profile",
     "watch:prod": "webpack --config etc/webpack.conf.js --watch --progress --profile",
+    "watch:prod:aot": "webpack --config etc/webpack.conf.js --watch --progress --profile",
     "pree2e": "webdriver-manager update"
   },
   "repository": {
